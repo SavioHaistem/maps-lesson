@@ -1,2 +1,7 @@
-package entities;public class RegisterService {
+package services;
+
+public class RegisterService {
+    public void registerAllVotes() {
+
+    }
 }
