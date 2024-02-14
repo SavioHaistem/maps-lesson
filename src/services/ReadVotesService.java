@@ -17,6 +17,9 @@ public class ReadVotesService {
         return votes;
     }
 
+    //TO-DO: fazer Map votes aceitar votos com candidatos de mesmo nome, porem no RegisterService fazer com que estes
+    // votos de mesmo nome sejam somados
+
     public void readVotes(String machineLogPath) {
         try (BufferedReader reader = new BufferedReader(new FileReader(machineLogPath))) {
             String line = reader.readLine();

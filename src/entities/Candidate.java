@@ -1,6 +1,6 @@
 package entities;
 
-public class Candidate {
+public class Candidate implements Comparable<Candidate> {
     private String name;
 
     public Candidate(String name) {
@@ -13,5 +13,10 @@ public class Candidate {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public int compareTo(Candidate o) {
+        return 0;
     }
 }
