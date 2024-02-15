@@ -11,7 +11,7 @@ public class Main {
 
         ReadVotesService readVotesService = new ReadVotesService();
         readVotesService.readVotes(path);
-        
+
         List<Vote> votes = readVotesService.getVotes();
         System.out.println(votes);
     }
