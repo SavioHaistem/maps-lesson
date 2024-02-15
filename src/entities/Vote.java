@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.Objects;
+
 public class Vote {
     private final Candidate candidate;
     private final Integer votes;
@@ -20,5 +22,18 @@ public class Vote {
     @Override
     public String toString() {
         return "vote { candidate: " + candidate + ", votes: " + votes + " }";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Vote vote = (Vote) o;
+        return Objects.equals(candidate, vote.candidate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(candidate);
     }
 }
