@@ -19,4 +19,9 @@ public class Candidate implements Comparable<Candidate> {
     public int compareTo(Candidate o) {
         return 0;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

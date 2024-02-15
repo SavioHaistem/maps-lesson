@@ -21,11 +21,12 @@ public class ReadVotesService {
 
     public void readVotes(String machineLogPath) {
         try (BufferedReader reader = new BufferedReader(new FileReader(machineLogPath))) {
+            System.out.println(machineLogPath);
             String line = reader.readLine();
             while(line != null) {
                 String[] splitedLine = line.split(",");
                 Candidate candidate = new Candidate(splitedLine[0]);
-                Integer quantity = Integer.getInteger(splitedLine[1]);
+                Integer quantity = Integer.parseInt(splitedLine[1]);
                 Vote vote = new Vote(candidate,quantity);
                 votes.add(vote);
                 line = reader.readLine();
