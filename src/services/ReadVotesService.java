@@ -1,41 +1,33 @@
 package services;
 
 import entities.Candidate;
+import entities.Vote;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ReadVotesService {
-    private final Map<Candidate, Integer> votes = new HashMap<>();
+    private final List<Vote> votes = new ArrayList<>();
 
     public void ReadVotesService() {
     }
 
-    public Map<Candidate, Integer> getVotes() {
+    public List<Vote> getVotes() {
         return votes;
     }
-
-    //TO-DO: fazer Map votes aceitar votos com candidatos de mesmo nome, porem no RegisterService fazer com que estes
-    // votos de mesmo nome sejam somados
 
     public void readVotes(String machineLogPath) {
         try (BufferedReader reader = new BufferedReader(new FileReader(machineLogPath))) {
             String line = reader.readLine();
-
             while(line != null) {
                 String[] splitedLine = line.split(",");
                 Candidate candidate = new Candidate(splitedLine[0]);
-                Integer vote = Integer.getInteger(splitedLine[1]);
-
-                if (votes.containsKey(candidate)) {
-                    int voteAccumulator = votes.get(candidate);
-                    votes.replace(candidate,(voteAccumulator + vote));
-                } else {
-                    votes.put(candidate,vote);
-                }
-
+                Integer quantity = Integer.getInteger(splitedLine[1]);
+                Vote vote = new Vote(candidate,quantity);
+                votes.add(vote);
                 line = reader.readLine();
             }
         } catch (IOException exception) {

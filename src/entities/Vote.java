@@ -1,8 +1,8 @@
 package entities;
 
 public class Vote {
-    private Candidate candidate;
-    private Integer votes;
+    private final Candidate candidate;
+    private final Integer votes;
 
     public Vote(Candidate candidate, Integer votes) {
         this.candidate = candidate;
