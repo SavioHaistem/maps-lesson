@@ -2,7 +2,7 @@ package entities;
 
 import java.util.Objects;
 
-public class Candidate implements Comparable<Candidate> {
+public class Candidate implements Comparable<Candidate>{
     private String name;
 
     public Candidate(String name) {
@@ -15,11 +15,6 @@ public class Candidate implements Comparable<Candidate> {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    @Override
-    public int compareTo(Candidate o) {
-        return 0;
     }
 
     @Override
@@ -38,5 +33,10 @@ public class Candidate implements Comparable<Candidate> {
     @Override
     public int hashCode() {
         return Objects.hash(name);
+    }
+
+    @Override
+    public int compareTo(Candidate o) {
+        return this.name.compareTo(o.getName());
     }
 }

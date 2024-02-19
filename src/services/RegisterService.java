@@ -6,12 +6,10 @@ import entities.Vote;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class RegisterService {
-    private final Map<Candidate, Integer> accumulatedVotes = new HashMap<>();
+    private final Map<Candidate, Integer> accumulatedVotes = new LinkedHashMap<>();
 
     public void registerAllVotes() {
     }
@@ -25,14 +23,15 @@ public class RegisterService {
                 accumulatedVotes.put(vote.getCandidate(),vote.getVotes());
             }
         }
+
     }
 
     public void registerVotes(String path) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(path))) {
             for (Candidate candidateKey : accumulatedVotes.keySet()) {
-                writer.newLine();
                 writer.write(candidateKey.getName() + " ,");
                 writer.write(accumulatedVotes.get(candidateKey).toString());
+                writer.newLine();
             }
         } catch (IOException exception) {
             System.err.println(exception.getMessage());
